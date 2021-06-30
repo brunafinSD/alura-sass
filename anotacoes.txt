@@ -1,0 +1,85 @@
+-instalar o sass:
+
+npm install -g sass
+
+-criar arquivos css:
+style.css
+
+-criar arquivo sass:
+style.scss
+
+- no terminal:
+(com esse comando o css pegará as informações do arquivo scss)
+sass --watch style.scss:style.css
+
+Os principais pré-processadores são Sass, Less e Stylus.
+Sass: Um dos mais populares e também o mais antigo pré-processador de css, criado em 2006.
+Sass significa Syntactically Awesome Style Sheets, e foi escrito em Ruby. 
+
+---------------------------------------------------------
+
+BEM: Block Element Modifer - é um padrão de nomenclatura para manter o projeto simples e organizado.
+exemplo:
+<div class="card"> (block)
+  <img class="card__img"> (element)
+  <button class="card__button-sucess"> (modifer - estado que o element ou o block podem ter)
+  <button class="card__button-back">
+</div>
+
+---------------------------------------------------------
+
+Nesting:
+Aninha os elementos um dentro do outro evitando a repetição de nome de classes.
+
+Parent selector (&):
+seletor "&" que permite referenciar o elemento pai
+
+ex.:
+sem o Sass:
+.header{}
+
+.header__img{}
+
+com o Sass:
+
+.header{
+  &__img{
+
+  }
+}
+
+---------------------------------------------------------
+Interpolation:
+
+injetar valores de código/variáveis no css
+exemplo:
+define a variável: 
+$img-width: 45%;
+
+injeta a variável no código
+width: calc(100% - #{$img-width});
+
+---------------------------------------------------------
+
+Placeholder selector (%):
+não é incluído quando o css é compilado
+todo estilo que estiver dentro do placeholder selector não será compilado no arquivo css
+pode ser extendido
+é possível usar em uma biblioteca que vários estilos são repetidos
+como se fosse uma função de liga e desliga de alguma propriedade
+
+exemplo:
+cria uma "variável de estilo" para depois aplicá-la no estilo.
+
+declarando o placeholder:
+%no-decoration{text-decoration: none;}
+
+aplicando:
+    &__post-title{
+      font-size: 14px;
+      color: $purple;
+      @extend %no-decoration; (para aplicar precisamos colocar antes o @extend)
+    }
+
+
+----------------------------------------------------------
