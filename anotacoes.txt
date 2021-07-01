@@ -83,3 +83,83 @@ aplicando:
 
 
 ----------------------------------------------------------
+
+Mixins e Include
+é possível criar uma variável que armazena um bloco de estilo e depois reaproveitá-la.
+
+exemplo:
+
+declara o mixin com estilo que será reutilizado:
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+usa o mixin em vez de digitar o código todo:
+    &__posts{
+      @include reset-list;
+    }
+
+declarando mixin:
+@mixin flx($property, $jty-cnt) {
+  display: flex;
+  #{$property}: $jty-cnt;
+}
+
+usando:
+@include flx(justify-content, center);
+
+no css não aparecerá o mixin, apenas seu resultado
+
+----------------------------------------------------------
+
+Funções
+
+é possível criar funções no css. Exemplo: transformar px em rem
+
+@function calculateRem($size) {
+  @return $size / 16px * 1rem;
+}
+
+@mixin fontSize($size) {
+  font-size: calculateRem($size);
+}
+
+para usar:
+@include fontSize(14px);
+
+-----------------------------------------------------------
+Quebrar style.scss em pequens arquivos conforme suas páginas
+Esses arquivos não serão compilados, vmaos importálos para dentro do arquivo principal
+
+para que isso aconteça é preciso nomear os arquivos pations com _ na frente.
+Exemplo: 
+novo arquivo:
+_header.scss 
+
+importando no arquivo principal:
+@import 'header';
+
+-----------------------------------------------------------
+
+algumas At Rules:
+@use: carrega mixins, functions e variáveis de outras folhas de estilos Sass e combina o CSS de diversas folhas de estilo juntos.
+
+@forward: carrega uma folha de estilo Sass e torna os mixins, functions e variáveis disponíveis quando a folha de estilo é carregada pela regra do @use.
+
+@import: estende as regras de CSS para carregar styles, mixins, functions e variáveis de outras folhas de estilo.
+
+@mixins e @include: facilitam a reutilização de trechos de código.
+
+@function: define funções customizadas que podem ser utilizadas em expressões.
+
+@extend: permite que os seletores herdem estilos uns dos outros.
+
+@at-root: coloca estilos dentro dele na raiz do documento CSS.
+
+@error: faz com que a compilação falhe com uma mensagem de erro.
+
+@warn: imprime um aviso sem parar totalmente a compilação.
+
+@debug: imprime uma mensagem para fins de debugging.
