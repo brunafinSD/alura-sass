@@ -52,7 +52,17 @@ $img-width: 45%;
   font-size: calculateRem($size);
 }
 
-@import 'header', 'footer', 'about', 'article';
+@import 'header', 'footer', 'about', 'article', 'collection', 'contact';
+
+$directions: top, bottom, left, right;
+$layout-margin-size: 10px;
+
+@each $direction in $directions{
+  %no-margin-#{$direction} {margin-#{$direction} : 0;}
+  %default-margin-#{$direction} {margin-#{$direction} : $layout-margin-size;}
+  %double-margin-#{$direction} {margin-#{$direction} : $layout-margin-size * 2;}
+  %half-margin-#{$direction} {margin-#{$direction} : $layout-margin-size * 0.5;}
+}
 
 .main {
   display: flex;
@@ -90,12 +100,11 @@ $img-width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    @extend %default-margin-top, %double-margin-bottom;
   }
 
   &__date {
-    margin: 0 10px;
+    @extend %no-margin-top, %no-margin-bottom, %default-margin-left, %default-margin-right;
     @include fontSize(12px);
     font-style: italic;
   }
@@ -105,7 +114,7 @@ $img-width: 45%;
     padding: 5px 7px;
     color: $purple;
     border: 1px solid $purple;
-    margin: 0 10px;
+    @extend %no-margin-top, %no-margin-bottom, %default-margin-left, %default-margin-right;
   }
 
   &__details {
@@ -155,8 +164,7 @@ $img-width: 45%;
   &__p {
     @include fontSize(14px);
     color: $dark-grey;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    @extend %default-margin-top, %default-margin-bottom;
   }
 
   &__comments {
@@ -167,8 +175,7 @@ $img-width: 45%;
     text-decoration: none;
     @include fontSize(14px);
     color: $dark-grey;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    @extend %default-margin-top, %default-margin-bottom;
 
     &:hover {
       color: $purple;
@@ -190,7 +197,7 @@ $img-width: 45%;
       background-color: $yellow;
       text-align: center;
       padding: 10px 20px;
-      margin: 0;
+      @extend %no-margin-top, %no-margin-bottom, %no-margin-left, %no-margin-right;
       letter-spacing: 1.5px;
     }
     &__posts {

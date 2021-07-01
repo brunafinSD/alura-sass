@@ -165,3 +165,14 @@ algumas At Rules:
 @warn: imprime um aviso sem parar totalmente a compilação.
 
 @debug: imprime uma mensagem para fins de debugging.
+
+---------------------------------------------------------------------
+Como fazer iterações no Sass.
+É possível fazer iterações no Sass com for, each ou while usando os At Rules.
+
+Podemos fazer condicionais no Sass com @if, @else if e @else, para atribuir determinado trecho de estilo
+dependendo de uma condição específica, por exemplo setar um tema dark ou light no nosso site.
+
+Como usar o While no Sass.
+O while também funciona com at rule, ficando @while <expression> { ... }.
+Ele valida se a expressão é verdadeira, e enquanto ela for válida, ele irá executar o trecho de código contido entre as chaves.
