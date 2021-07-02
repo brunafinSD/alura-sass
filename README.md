@@ -9,7 +9,7 @@ Sobre nós:
 Artigo:
 ![image](https://user-images.githubusercontent.com/79814692/124280859-8d898080-db1f-11eb-9227-d427f1e18264.png)
 
-Todos artigos:
+Posts:
 ![image](https://user-images.githubusercontent.com/79814692/124280912-97ab7f00-db1f-11eb-888d-13905e61d207.png)
 
 Contato:
